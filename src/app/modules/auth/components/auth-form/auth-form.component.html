@@ -1,3 +1,27 @@
-<p>
-  auth-form works!
-</p>
+<mat-card>
+
+  <form class="form__auth" [formGroup]="authForm" (submit)="doSubmit()">
+
+    <mat-form-field>
+      <input matInput placeholder="Username" formControlName="username" required>
+      <mat-error *ngIf="authForm.get('username').hasError('required')">You must enter a value</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" formControlName="password" required>
+      <mat-error *ngIf="authForm.get('password').hasError('required')">You must enter a value</mat-error>
+    </mat-form-field>
+
+    <div class="action-row">
+      <button type="submit" mat-raised-button color="primary" [disabled]="authForm.invalid">Login</button>
+    </div>
+
+  </form>
+
+  <div>
+    <button mat-button>Sign In</button>
+    |
+    <button mat-button>Sign Up</button>
+  </div>
+
+</mat-card>

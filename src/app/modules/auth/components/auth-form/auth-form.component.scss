@@ -1,0 +1,12 @@
+.form {
+  &__auth {
+    display: flex;
+    flex-direction: column;
+    > * {
+      width: 100%;
+    }
+    > .action-row {
+      text-align: center;
+    }
+  }
+}

@@ -1,4 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+
+export interface SubmitData {
+  login: string;
+  password: string;
+}
 
 @Component({
   selector: 'cpl-auth-form',
@@ -6,11 +12,22 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./auth-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AuthFormComponent implements OnInit {
+export class AuthFormComponent {
 
-  constructor() { }
+  @Input() error: any;
+  @Output() onSubmit = new EventEmitter<SubmitData>();
 
-  ngOnInit() {
+  authForm = this.formBuilder.group({
+    username: [''],
+    password: ['']
+  });
+
+  constructor(private formBuilder: FormBuilder) {
+  }
+
+  doSubmit() {
+    console.log('Submit', this.authForm.getRawValue(), this.authForm);
+    // this.onSubmit.emit(this.authForm.getRawValue());
   }
 
 }

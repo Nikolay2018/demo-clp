@@ -26,9 +26,9 @@
 
   <div class="social">
     <span>Sign Up/ Sign In with</span>
-    <mat-icon fontSet="fa" fontIcon="fa-facebook-square" class="fa-3x"></mat-icon>
-    <mat-icon fontSet="fa" fontIcon="fa-twitter-square" class="fa-3x"></mat-icon>
-    <mat-icon fontSet="fa" fontIcon="fa-google-plus-square" class="fa-3x"></mat-icon>
+    <mat-icon fontSet="fa" fontIcon="fa-facebook-square" class="fa-3x" (click)="socialAuth('facebook')"></mat-icon>
+    <mat-icon fontSet="fa" fontIcon="fa-twitter-square" class="fa-3x" (click)="socialAuth('twitter')"></mat-icon>
+    <mat-icon fontSet="fa" fontIcon="fa-google-plus-square" class="fa-3x" (click)="socialAuth('google')"></mat-icon>
   </div>
 
   <div class="recovery-link">

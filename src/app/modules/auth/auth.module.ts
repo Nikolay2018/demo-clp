@@ -5,7 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { AuthContainerComponent } from './containers/auth-container/auth-container.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatIconRegistry, MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [AuthFormComponent, AuthContainerComponent],
@@ -17,9 +17,15 @@ import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule } fr
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   exports: [AuthContainerComponent]
 })
 export class AuthModule {
+  constructor(
+    public matIconRegistry: MatIconRegistry
+  ) {
+    matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+  }
 }

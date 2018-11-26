@@ -33,3 +33,5 @@ export function reducer(state = initialState, action: AuthActions): State {
       return state;
   }
 }
+
+export const _isLogged = (state: State) => state.loggedIn;

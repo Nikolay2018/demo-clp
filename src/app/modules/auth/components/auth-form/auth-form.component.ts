@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 export interface SubmitData {
   login: string;
@@ -46,7 +47,7 @@ export class AuthFormComponent {
   }
 
   socialAuth(provider: string) {
-    window.location.href = 'http://localhost:8001/auth/social/' + provider;
+    window.location.href = `${environment.api}/auth/social/${provider}`;
   }
 
 }

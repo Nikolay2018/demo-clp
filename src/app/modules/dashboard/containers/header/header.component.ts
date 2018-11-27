@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { AuthLogout } from '../../../auth/state/actions/auth.actions';
 import { State } from '../../../../reducers';
+import { Observable } from 'rxjs';
+import { getUsername } from '../../../auth/state/reducers/index.reducer';
 
 @Component({
   selector: 'cpl-header',
@@ -11,10 +13,13 @@ import { State } from '../../../../reducers';
 })
 export class HeaderComponent implements OnInit {
 
+  public username$: Observable<string>;
+
   constructor(private store$: Store<State>) {
   }
 
   ngOnInit() {
+    this.username$ = this.store$.pipe(select(getUsername));
   }
 
   logout() {

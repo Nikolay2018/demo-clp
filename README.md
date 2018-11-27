@@ -1,3 +1,23 @@
+# Деплой
+
+1. Клонировать репозиторий.
+
+2. Выполнить `npm install`
+
+3. Сконфигурировать путь к API в файле `src/environments/environment.prod.ts` 
+
+```javascript
+export const environment = {
+  production: true,
+  api: 'http://192.168.1.81:3008' <-- Backend URL
+};
+```
+
+4. Собрать билд командой `npm build`
+   В корневом каталоге приложения появится папка `dist/clp`. 
+   Необходимо сконфигурировать Nginx/Apache/etc... на `index.html` из этой папки.
+
+
 # Clp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.

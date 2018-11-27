@@ -1,0 +1,37 @@
+<nav class="navbar-header">
+
+  <a class="logo" mat-button routerLink="/dashboard">
+    <img src="/assets/logo.svg">
+    CLP logo
+  </a>
+
+  <button mat-button [matMenuTriggerFor]="balance">Balance: ETH/ CRLS/ Bonuses</button>
+  <mat-menu #balance="matMenu">
+    <button mat-menu-item>Withdrawal request</button>
+    <button mat-menu-item>Wallets addresses</button>
+    <button mat-menu-item>Transactions history</button>
+    <button mat-menu-item>Send ETH/CRLS/Collectable</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="profile">Profile status</button>
+  <mat-menu #profile="matMenu">
+    <button mat-menu-item>Start approval</button>
+    <button mat-menu-item>Approval progress</button>
+    <button mat-menu-item>Approval folder</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="messages">Messages</button>
+  <mat-menu #messages="matMenu">
+    <button mat-menu-item>List messages from messenger</button>
+  </mat-menu>
+
+  <div class="flex-spacer"></div>
+
+  <button mat-button [matMenuTriggerFor]="session">Messages</button>
+  <mat-menu #session="matMenu" class="session">
+    <span>email</span>
+    <button mat-menu-item>Edit profile</button>
+    <button mat-menu-item>Logout</button>
+  </mat-menu>
+
+</nav>

@@ -27,7 +27,9 @@
 
   <div class="flex-spacer"></div>
 
-  <button mat-button [matMenuTriggerFor]="session">Messages</button>
+  <button mat-button [matMenuTriggerFor]="session">
+    <img [src]="avatar$|async">
+  </button>
   <mat-menu #session="matMenu">
     <span class="session__email">{{username$|async}}</span>
     <button mat-menu-item>Edit profile</button>

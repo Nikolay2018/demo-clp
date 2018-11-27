@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { AuthActionTypes, AuthComplete, SetToken } from '../actions/auth.actions';
+import { AuthActionTypes, AuthComplete, AuthLogout, SetToken } from '../actions/auth.actions';
 import { State } from '../reducers/auth.reducer';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
@@ -17,7 +17,13 @@ export class AuthEffects {
     map(action => action.payload),
     switchMap((payload) => this.authService.getInfo(payload.token)
       .pipe(
-        map(data => new AuthComplete(data))
+        map((data: any) => {
+          if (data.status === 403) {
+            return new AuthLogout();
+          } else {
+            return new AuthComplete(data);
+          }
+        })
       )
     )
   );

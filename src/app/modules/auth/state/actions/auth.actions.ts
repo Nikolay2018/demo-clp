@@ -3,7 +3,8 @@ import { Action } from '@ngrx/store';
 export enum AuthActionTypes {
   LoadAuths = '[Auth] Load Auths',
   SetToken = '[Auth] Set token',
-  AuthComplete = '[Auth] Auth complete'
+  AuthComplete = '[Auth] Auth complete',
+  AuthLogout = '[Auth] Auth logout'
 }
 
 export class AuthComplete implements Action {
@@ -11,6 +12,10 @@ export class AuthComplete implements Action {
 
   constructor(public payload: any) {
   }
+}
+
+export class AuthLogout implements Action {
+  readonly type = AuthActionTypes.AuthLogout;
 }
 
 export class LoadAuths implements Action {
@@ -24,4 +29,4 @@ export class SetToken implements Action {
   }
 }
 
-export type AuthActions = LoadAuths | SetToken | AuthComplete;
+export type AuthActions = LoadAuths | SetToken | AuthComplete | AuthLogout;

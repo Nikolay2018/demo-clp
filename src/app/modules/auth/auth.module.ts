@@ -12,7 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './state/effects/auth.effects';
 import { CookieService } from 'ngx-cookie-service';
 import { State } from '../../reducers';
-import { SetToken } from './state/actions/auth.actions';
+import { AuthLogout, SetToken } from './state/actions/auth.actions';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -45,6 +45,8 @@ export class AuthModule {
     const token = this.cookieService.get('x-token');
     if (token) {
       this.store$.dispatch(new SetToken({ token }));
+    } else {
+      this.store$.dispatch(new AuthLogout());
     }
   }
 }

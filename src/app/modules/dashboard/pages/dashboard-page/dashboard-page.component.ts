@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'cpl-dashboard-page',
@@ -8,7 +8,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class DashboardPageComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

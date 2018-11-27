@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, Router, UrlSegment } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { State } from '../../../reducers';
 import { isLogged } from '../state/reducers/index.reducer';
+import { State } from '../../../reducers';
 import { filter, map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OnlyLoggedInGuard implements CanLoad {
+export class OnlyGuestGuard implements CanActivate {
 
   constructor(private store$: Store<State>, private router: Router) {
   }
 
-  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+
     return new Promise((resolve) => {
       this.store$.pipe(
         select(isLogged),
@@ -22,9 +25,9 @@ export class OnlyLoggedInGuard implements CanLoad {
         take(1),
         map(loggedIn => {
           if (loggedIn) {
-            resolve(true);
+            this.router.navigate(['/dashboard']);
           } else {
-            this.router.navigate(['']);
+            return resolve(true);
           }
         })
       ).subscribe();

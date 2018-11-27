@@ -9,7 +9,7 @@ export interface State {
 export const initialState: State = {
   token: null,
   username: null,
-  loggedIn: false
+  loggedIn: null
 };
 
 export function reducer(state = initialState, action: AuthActions): State {
@@ -28,6 +28,11 @@ export function reducer(state = initialState, action: AuthActions): State {
         loggedIn: true
       };
 
+    case AuthActionTypes.AuthLogout:
+      return {
+        ...state,
+        loggedIn: false
+      };
 
     default:
       return state;

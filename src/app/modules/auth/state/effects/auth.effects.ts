@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
 import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
@@ -21,7 +22,17 @@ export class AuthEffects {
     )
   );
 
+  @Effect({ dispatch: false })
+  logOut$ = this.actions$.pipe(
+    ofType(AuthActionTypes.AuthLogout),
+    map(action => {
+      this.cookieService.deleteAll();
+      this.router.navigate(['']);
+    })
+  );
+
   constructor(
+    private router: Router,
     private authService: AuthService,
     private actions$: Actions,
     private store$: Store<State>,

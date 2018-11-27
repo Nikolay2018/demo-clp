@@ -1,4 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AuthLogout } from '../../../auth/state/actions/auth.actions';
+import { State } from '../../../../reducers';
 
 @Component({
   selector: 'cpl-header',
@@ -8,9 +11,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store$: Store<State>) {
+  }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.store$.dispatch(new AuthLogout());
   }
 
 }

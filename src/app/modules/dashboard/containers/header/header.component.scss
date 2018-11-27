@@ -16,13 +16,6 @@
     }
   }
 
-  .session {
-    span {
-      display: block;
-      text-align: center;
-    }
-  }
-
   button {
     color: white;
   }
@@ -30,4 +23,11 @@
 
 .flex-spacer {
   flex-grow: 1;
+}
+
+.session {
+  &__email {
+    display: block;
+    text-align: center;
+  }
 }
